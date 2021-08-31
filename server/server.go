@@ -18,7 +18,7 @@ type SlaveInfo struct {
 var slaves map[string]string
 
 var (
-	bind = flag.String("bind", "localhost:8972", "server address")
+	bind = flag.String("bind", "0.0.0.0:8972", "server address")
 )
 
 type DMService int
