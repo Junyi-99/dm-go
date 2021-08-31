@@ -1,0 +1,38 @@
+syntax = "proto3";
+option go_package = "dm-go/proto/pb";
+package pb;
+
+// Slave 的 Service 在服务注册时发送给 Master 的信息
+message DMServiceInfo {
+  string name = 1;
+  string desc = 2;
+  string addr = 3; // ip:port
+  string hostname = 4;
+
+  uint32 major = 7; // version
+  uint32 minor = 8;
+  uint32 patch = 9;
+}
+
+// 设备基本信息
+message DeviceSummary {
+  string ip = 1;
+  string hostname = 2;
+
+  string cpu = 5; // cpu model
+  string gpu = 6; // gpu model
+  uint32 cores = 7; // cpu cores
+  uint64 memory = 8; // total memory in bytes
+
+  string os = 10; // Ubuntu 18.04.1 / Windows 10 Home
+  string kernel = 11; // NT6 / Linux5.4.0-74-generic
+  string arch = 12; // x86 / x64 / arm
+}
+
+message Response {
+  uint32 code = 1;
+  string msg = 2;
+}
+
+message Void {
+}
