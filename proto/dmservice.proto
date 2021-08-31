@@ -1,3 +1,5 @@
+// protoc --go_out=. --go_opt=paths=source_relative proto/dmservice.proto
+
 syntax = "proto3";
 option go_package = "dm-go/proto/pb";
 package pb;
@@ -14,19 +16,22 @@ message DMServiceInfo {
   uint32 patch = 9;
 }
 
-// 设备基本信息
-message DeviceSummary {
+// Slave 基本信息
+message SlaveSummary {
   string ip = 1;
   string hostname = 2;
+  string addr = 3; // Slave Service 绑定的端口
 
-  string cpu = 5; // cpu model
-  string gpu = 6; // gpu model
-  uint32 cores = 7; // cpu cores
-  uint64 memory = 8; // total memory in bytes
+  string cpu_model = 5; // cpu model
+  string cpu_total = 6; //
+  uint32 cpu_cores = 7; // multiple cpu total cores
+  string gpu_model = 8; // gpu model
+  string gpu_total = 9; //
+  uint64 memory = 10; // total memory in bytes
 
-  string os = 10; // Ubuntu 18.04.1 / Windows 10 Home
-  string kernel = 11; // NT6 / Linux5.4.0-74-generic
-  string arch = 12; // x86 / x64 / arm
+  string os = 11; // Ubuntu 18.04.1 / Windows 10 Home
+  string kernel = 12; // NT6 / Linux5.4.0-74-generic
+  string arch = 13; // x86 / x64 / arm
 }
 
 message Response {
